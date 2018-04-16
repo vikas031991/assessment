@@ -1,0 +1,28 @@
+<div>
+	<div>
+		<label>Enter City Name</label>
+		<input type="text" [(ngModel)]='city' />
+	</div>
+	<div>
+		<button type="submit" (click)="getWeather()">Get Weather Now</button>
+		<button type="submit" (click)="forcast()">Forcast</button>
+	</div>
+	<div *ngIf="showWeather">
+		<div><label>Searched City : </label>{{showWeather.name}}</div>
+		<div><label>Current Temp : </label>{{showWeather.main.temp}}</div>
+		<div><label>Current Pressure : </label>{{showWeather.main.pressure}}</div>
+	</div>
+	<div *ngIf="showForcast">
+		<div><label>Searched City : </label>{{showForcast.city.name}}</div>
+		<ul *ngFor="let list of showForcast.list">
+			<li>
+				<div><label>Time and Date: </label>{{list.dt_txt}}</div>
+				<div><label>Current Temp : </label>{{list.main.temp}}</div>
+				<div><label>Current Pressure : </label>{{list.main.pressure}}</div>
+			</li>
+		</ul>
+	</div>
+	<div *ngIf="errorCode">
+		city not found
+	</div>
+</div>
